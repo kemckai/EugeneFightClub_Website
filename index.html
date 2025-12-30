@@ -370,10 +370,19 @@
         .footer-container {
             max-width: 1224px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             gap: 40px;
             text-align: center;
+        }
+        
+        .footer-subscribe {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .footer-subscribe h3 {
@@ -386,6 +395,8 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
+            width: 100%;
+            max-width: 400px;
         }
         
         .subscribe-form input {
@@ -422,6 +433,7 @@
         .footer-copyright {
             color: rgb(227, 45, 45);
             font-family: 'FightThis Regular', sans-serif;
+            text-align: center;
         }
         
         /* Mobile Menu */
@@ -467,9 +479,6 @@
                 font-size: 36px;
             }
             
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
             
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
