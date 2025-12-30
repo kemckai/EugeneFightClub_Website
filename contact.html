@@ -285,15 +285,6 @@
             font-family: 'FightThis Regular', sans-serif;
         }
         
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: rgb(187, 54, 43);
-            font-size: 24px;
-            cursor: pointer;
-        }
         
         /* Responsive */
         @media (max-width: 768px) {
@@ -301,29 +292,6 @@
                 flex-wrap: wrap;
             }
             
-            .mobile-menu-toggle {
-                display: block;
-            }
-            
-            nav {
-                display: none;
-                width: 100%;
-                order: 3;
-            }
-            
-            nav.active {
-                display: block;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                gap: 10px;
-                padding: 20px 0;
-            }
-            
-            .social-icons {
-                order: 2;
-            }
             
             .page-title {
                 font-size: 36px;
@@ -342,17 +310,12 @@
                 <img src="images/efc_logo2025-YleW05KVektVkMaN.png" alt="Eugene Fight Club logo">
             </a>
             
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
-            
-            <nav id="main-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="shows.html">Shows</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            
             <div class="social-icons">
+                <a href="shows.html" aria-label="Shows">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 4H5C3.89 4 3 4.9 3 6V20C3 21.1 3.89 22 5 22H19C20.1 22 21 21.1 21 20V6C21 4.9 20.1 4 19 4ZM19 20H5V9H19V20ZM19 7H5V6H19V7ZM7 11H17V13H7V11ZM7 14H17V16H7V14ZM7 17H12V19H7V17Z" fill="currentColor"/>
+                    </svg>
+                </a>
                 <a href="https://www.facebook.com/profile.php?id=61565947809415" target="_blank" rel="noopener" aria-label="Facebook">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M24 12.0726C24 5.44354 18.629 0.0725708 12 0.0725708C5.37097 0.0725708 0 5.44354 0 12.0726C0 18.0619 4.38823 23.0264 10.125 23.9274V15.5414H7.07661V12.0726H10.125V9.4287C10.125 6.42144 11.9153 4.76031 14.6574 4.76031C15.9706 4.76031 17.3439 4.99451 17.3439 4.99451V7.94612H15.8303C14.34 7.94612 13.875 8.87128 13.875 9.82015V12.0726H17.2031L16.6708 15.5414H13.875V23.9274C19.6118 23.0264 24 18.0619 24 12.0726Z" fill="currentColor"></path>
@@ -423,10 +386,6 @@
     </footer>
 
     <script>
-        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
-            document.getElementById('main-nav').classList.toggle('active');
-        });
-        
         // Contact form handling
         // TODO: Replace 'YOUR_FORMSPREE_ENDPOINT' with your actual Formspree endpoint URL
         // Get it from https://formspree.io after signing up
