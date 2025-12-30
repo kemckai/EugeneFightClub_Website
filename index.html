@@ -453,6 +453,26 @@
             text-align: center;
         }
         
+        .form-message {
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .form-message.success {
+            background-color: rgba(0, 255, 0, 0.2);
+            color: #4caf50;
+            border: 1px solid #4caf50;
+        }
+        
+        .form-message.error {
+            background-color: rgba(255, 0, 0, 0.2);
+            color: #f44336;
+            border: 1px solid #f44336;
+        }
+        
         /* Mobile Menu */
         .mobile-menu-toggle {
             display: none;
@@ -671,9 +691,10 @@
         <div class="footer-container">
             <div class="footer-subscribe">
                 <h3>Subscribe</h3>
-                <form class="subscribe-form" action="#" method="post">
-                    <input type="email" name="email" placeholder="Your email address" required>
+                <form class="subscribe-form" id="subscribe-form" method="POST">
+                    <input type="email" name="email" id="subscribe-email" placeholder="Your email address" required>
                     <button type="submit">Join</button>
+                    <div id="subscribe-message" class="form-message" style="display: none;"></div>
                 </form>
             </div>
             <div class="footer-copyright">
@@ -766,6 +787,54 @@
                 changeImage(1);
             }
         });
+        
+        // Subscribe form handling
+        // TODO: Replace 'YOUR_FORMSPREE_ENDPOINT' with your actual Formspree endpoint URL
+        // Get it from https://formspree.io after signing up
+        const subscribeForm = document.getElementById('subscribe-form');
+        if (subscribeForm) {
+            subscribeForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const messageDiv = document.getElementById('subscribe-message');
+                const emailInput = document.getElementById('subscribe-email');
+                const submitButton = subscribeForm.querySelector('button[type="submit"]');
+                
+                // Disable submit button
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+                messageDiv.style.display = 'none';
+                
+                try {
+                    // Replace this URL with your Formspree endpoint
+                    const response = await fetch('YOUR_FORMSPREE_ENDPOINT', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            email: emailInput.value,
+                            _subject: 'New Subscription - Eugene Fight Club'
+                        })
+                    });
+                    
+                    if (response.ok) {
+                        messageDiv.textContent = 'Thank you for subscribing!';
+                        messageDiv.className = 'form-message success';
+                        messageDiv.style.display = 'block';
+                        emailInput.value = '';
+                    } else {
+                        throw new Error('Submission failed');
+                    }
+                } catch (error) {
+                    messageDiv.textContent = 'Something went wrong. Please try again later.';
+                    messageDiv.className = 'form-message error';
+                    messageDiv.style.display = 'block';
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Join';
+                }
+            });
+        }
     </script>
 </body>
 </html>
