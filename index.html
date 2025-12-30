@@ -333,19 +333,20 @@
             top: 50%;
             transform: translateY(-50%);
             color: #fff;
-            font-size: 40px;
+            font-size: 36px;
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
-            padding: 20px;
+            padding: 0;
             transition: color 0.3s;
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
+            line-height: 1;
         }
         
         .lightbox-nav:hover {
@@ -354,11 +355,27 @@
         }
         
         .lightbox-prev {
-            left: 30px;
+            left: 20px;
         }
         
         .lightbox-next {
-            right: 30px;
+            right: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .lightbox-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 28px;
+            }
+            
+            .lightbox-prev {
+                left: 10px;
+            }
+            
+            .lightbox-next {
+                right: 10px;
+            }
         }
         
         /* Footer */
